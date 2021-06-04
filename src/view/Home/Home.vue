@@ -30,24 +30,28 @@ export default {
     return {
       sum: {
         facebook: {
+          platform:'facebook',
           name: '@nathanf',
           number: 1987,
           compare: 12,
           id:1
         },
         twitter: {
+          platform:'twitter',
           name: '@nathanf',
           number: 1066,
           compare: 99,
           id:2
         },
         instagram: {
+          platform:'instagram',
           name: '@realnathanf',
           number: 11000,
           compare: 1099,
           id:3
         },
         youtube: {
+          platform:'youtube',
           name: 'Nathan F.',
           number: 8239,
           compare: -144,
