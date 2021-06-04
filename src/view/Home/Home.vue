@@ -51,7 +51,6 @@ export default {
           name: 'Nathan F.',
           number: 8239,
           compare: -144,
-          down:true,
           id:4
         }
       }

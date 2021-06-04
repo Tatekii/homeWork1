@@ -12,8 +12,9 @@ module.exports = {
     });
     config.resolve.alias.set("@", path.join(__dirname, "src"));
     config.module.rules.delete("svg");
-    config.module
-      .rule("svg-smart")
+
+    config.module  
+      .rule('icons')
       .test(/\.svg$/)
       .include.add(resolve("src/assets/icon"))
       .end()
