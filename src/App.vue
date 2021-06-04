@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Desktop></Desktop>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Desktop from '@/view/Home/Home'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+Desktop
+  },
+  created () {
+    function browserRedirect () {
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+      var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+      var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+      var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+      var bIsAndroid = sUserAgent.match(/android/i) == "android";
+      var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+      var bIsWM = sUserAgent.match(/windows phone/i) == "windows mobile";
+      var bIsMobile = sUserAgent.match(/mobile/i) == "mobile";
+      var bIsPlaybook = sUserAgent.match(/playbook/i) == "playbook";
+
+      if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM || bIsMobile || bIsPlaybook) {
+        // mobile
+      } else {
+        // pc
+      }
+    }
+
+    browserRedirect();
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  font-family: "Inter", sans-serif;
+}
+#app{
+  position: relative;
 }
 </style>
