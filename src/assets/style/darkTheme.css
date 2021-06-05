@@ -1,8 +1,8 @@
-
-:root{
---Bg--: hsl(230, 17%, 14%);
---TopBg--: hsl(232, 19%, 15%);
---CardBg--: hsl(228, 28%, 20%);
---CardText--: hsl(228, 34%, 66%);
---Text--: white;
+:root {
+  --Bg--: hsl(230, 17%, 14%);
+  --TopBg--: hsl(232, 19%, 15%);
+  --CardBg--: hsl(228, 28%, 20%);
+  --CardText--: hsl(228, 34%, 66%);
+  --Text--: white;
+  --Toggle--: linear-gradient(hsl(210, 78%, 56%), hsl(146, 68%, 55%));
 }

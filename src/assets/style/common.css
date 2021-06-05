@@ -3,9 +3,19 @@
   --BrightRed--: hsl(356, 69%, 56%);
   --Facebook--: hsl(208, 92%, 53%);
   --Twitter--: hsl(203, 89%, 53%);
-  --Instagram--: linear gradient hsl(37, 97%, 70%) to hsl(329, 70%, 58%);
+  --Instagram--: linear-gradient(hsl(37, 97%, 70%), hsl(329, 70%, 58%));
   --YouTube--: hsl(348, 97%, 39%);
-
-  --ToggleDark--: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
-  --ToggleLight--: hsl(230, 22%, 74%);
+  cursor: pointer;
+}
+.facebook-line{
+  background: var(--Facebook--);
+}
+.twitter-line{
+  background: var(--Twitter--)
+}
+.instagram-line{
+  background: var(--Instagram--);
+}
+.youtube-line{
+  background: var(--YouTube--);
 }

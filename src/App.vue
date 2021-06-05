@@ -16,7 +16,6 @@ export default {
 
 <style>
 #app {
-  position: relative;
   font-family: "Inter"
 }
 </style>

@@ -1,11 +1,12 @@
 import Vue from 'vue';
-import Antd from 'ant-design-vue';
+// import Antd from 'ant-design-vue';
 import App from './App';
-import 'ant-design-vue/dist/antd.css';
+// import 'ant-design-vue/dist/antd.css';
 // import './assets/font/font.css'
 import browserRedirect from './utils/device'
 import './assets/style/desktopLayout.css'
 import './assets/font/Inter-VariableFont_slnt,wght.ttf'
+import { Switch,Button } from 'ant-design-vue'
 
 Vue.config.productionTip = false
 
@@ -17,7 +18,9 @@ const req = require.context('./assets/icon', true, /\.svg$/);
 requireAll(req)
 Vue.component('svg-icon',SvgIcon)
 
-Vue.use(Antd);
+// Vue.use(Antd);
+Vue.use(Switch)
+Vue.use(Button)
 
 const device = browserRedirect();
 console.log(device);

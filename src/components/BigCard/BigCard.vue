@@ -1,6 +1,6 @@
 <template>
   <div class="big-card-block">
-    <div class="top-border"></div>
+    <div class="top-border" :class="cardData.platform+'-line'"></div>
     <div class="platform">
       <svg-icon
         :icon-class="cardData.platform"
@@ -60,8 +60,9 @@ export default {
   flex-direction: column;
 }
 .top-border {
-  height: 2px;
-  background: var(--Instagram--);
+  height: 4px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 .platform {
   font-size: 12px;
