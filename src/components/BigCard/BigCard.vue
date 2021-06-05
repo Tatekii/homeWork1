@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import formatNumToK from '@/assets/helper/kFormat.js'
 export default {
   name: 'BigCard',
   components: {
@@ -40,7 +41,7 @@ export default {
       return Math.abs(num)
     },
     formatNum (num) {
-      return num > 10000 ? Math.floor(num / 1000) + 'k' : num
+      return formatNumToK(num)
     }
   },
   computed: {

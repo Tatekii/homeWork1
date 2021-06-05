@@ -5,7 +5,9 @@
       <header class="header">
         <div class="left">
           <div class="title">Social Media Dashboard</div>
-          <div class="views">Total Follwers:23,004</div>
+          <div class="views">
+            Total Follwers: {{ formatNum(totalFollwers) }}
+          </div>
         </div>
         <div class="right">
           <div class="switch-title">Dark Mode</div>
@@ -17,11 +19,13 @@
       </section>
       <section class="overview">
         <p class="overview-title">Overview - Today</p>
-        <SmallCard
-          v-for="item in overViewsFormat"
-          :key="item.b_index"
-          :cardData="item"
-        />
+        <div class="overview-list">
+          <SmallCard
+            v-for="item in overViewsFormat"
+            :key="item.b_index"
+            :cardData="item"
+          />
+        </div>
       </section>
     </div>
   </div>
@@ -34,6 +38,7 @@ import BigCard from
   '@/components/BigCard/BigCard'
 import SmallCard from '@/components/SmallCard/SmallCard'
 import ASwitch from '@/components/ASwitch/ASwitch'
+import commaFormat from '@/assets/helper/commaFormat.js'
 export default {
   name: 'Home',
   components: {
@@ -74,11 +79,13 @@ export default {
           platform: 'facebook',
           data: [
             {
-              pageViews: 87,
+              type:'page views',
+              number: 87,
               compare: 3
             },
             {
-              likes: 52,
+              type:'likes',
+              number: 52,
               compare: -2
             }
           ]
@@ -87,11 +94,13 @@ export default {
           platform: 'instagram',
           data: [
             {
-              profileViews: 52000,
+              type:'profile views',
+              number: 52000,
               compare: 1375
             },
             {
-              likes: 5462,
+              type:'likes',
+              number: 5462,
               compare: 2257
             }
           ]
@@ -100,11 +109,13 @@ export default {
           platform: 'twitter',
           data: [
             {
-              retweetws: 117,
+              type:'retweetws',
+              number: 117,
               compare: 303
             },
             {
-              likes: 507,
+              type:'likes',
+              number: 507,
               compare: 553
             }
           ]
@@ -113,17 +124,24 @@ export default {
           platform: 'youtube',
           data: [
             {
-              likes: 107,
+              type:'likes',
+              number: 107,
               compare: -19
             },
             {
-              totlaViews: 1407,
+              type:'total views',
+              number: 1407,
               compare: -12
             }
           ]
         }
       ]
 
+    }
+  },
+  methods: {
+    formatNum: function (num) {
+      return commaFormat(num)
     }
   },
   computed: {
@@ -139,6 +157,12 @@ export default {
         }
         return acc
       }, [])
+    },
+    totalFollwers () {
+      return this.sum.reduce((acc, cur) => {
+        acc += cur.number
+        return acc
+      }, 0)
     }
   }
 }
@@ -184,7 +208,7 @@ export default {
   width: 10%;
   justify-content: space-between;
 }
-.header .right .switch-title{
+.header .right .switch-title {
   color: var(--CardText--);
 }
 .changes {
@@ -199,5 +223,10 @@ export default {
 .overview .overview-title {
   font-size: 24px;
   margin-bottom: 20px;
+}
+.overview .overview-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 </style>

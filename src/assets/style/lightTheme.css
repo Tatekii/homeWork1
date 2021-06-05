@@ -6,3 +6,6 @@
   --Text--: hsl(230, 17%, 14%);
   --Toggle--: hsl(230, 22%, 74%);
 }
+body{
+  background: var(--Bg--);
+}
