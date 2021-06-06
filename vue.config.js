@@ -5,13 +5,6 @@ function resolve(dir) {
 }
 
 module.exports = {
-  // css:{
-  //   loaderOption:{
-  //     less:{
-  //       javascriptEnable:true
-  //     }
-  //   }
-  // },
   chainWebpack: (config) => {
     config.plugin("html").tap((args) => {
       args[0].title = "Social Media Dashboard";

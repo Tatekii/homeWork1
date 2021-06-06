@@ -11,7 +11,7 @@
         </div>
         <div class="right">
           <div class="switch-title">Dark Mode</div>
-          <ASwitch></ASwitch>
+          <ASwitch @switchTheme="switchTheme"></ASwitch>
         </div>
       </header>
       <section class="changes">
@@ -142,6 +142,14 @@ export default {
   methods: {
     formatNum: function (num) {
       return commaFormat(num)
+    },
+    switchTheme(switchFlag){
+      console.log(switchFlag);
+      if(!switchFlag){
+        // useDarkMode
+      }else{
+        console.log();
+      }
     }
   },
   computed: {
