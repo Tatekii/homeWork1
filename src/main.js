@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import App from './App';
-import browserRedirect from './utils/device'
-import './assets/style/desktopLayout.css'
 import './assets/font/Inter-VariableFont_slnt,wght.ttf'
 import { Switch,Button } from 'ant-design-vue'
+import '@/assets/style/common.css'
 
 Vue.config.productionTip = false
 
@@ -18,9 +17,6 @@ Vue.component('svg-icon',SvgIcon)
 // Vue.use(Antd);
 Vue.use(Switch)
 Vue.use(Button)
-
-const device = browserRedirect();
-console.log(device);
 
 new Vue({
   render: h => h(App),

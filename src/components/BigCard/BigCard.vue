@@ -17,7 +17,7 @@
         </div>
       </div>
       <div v-else>
-        <div class="compare red">
+        <div class="compare red animate__shakeY">
           <svg-icon icon-class="down" style="vertical-align: middle"></svg-icon>
           {{ compareAbs(cardData.compare) }} Today
         </div>
@@ -43,3 +43,46 @@ export default {
 }
 </script>
 
+<style scoped>
+.big-card-block {
+  height: 220px;
+  background: var(--CardBg--);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.top-border {
+  height: 4px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.platform {
+  font-size: 12px;
+  color: var(--CardText--);
+  height: 50px;
+  line-height: 50px;
+}
+.platform .platName {
+  color: var(--CardText--);
+  margin-left: 4px;
+  padding-top: 3px;
+}
+.count {
+  font-size: 56px;
+}
+.followers {
+  font-size: 12px;
+  font-weight: lighter;
+  letter-spacing: 6px;
+  color: var(--CardText--);
+  margin-bottom: 20px;
+}
+.compare {
+  height: 16px;
+  line-height: 16px;
+  color: var(--LimeGreen--);
+}
+.compare.red {
+  color: var(--BrightRed--);
+}
+</style>

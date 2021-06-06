@@ -20,7 +20,25 @@
 }
 * {
   color: var(--Text--);
+  font-size: 14px;
 }
-.pointer:hover{
-  cursor: pointer;
+.animate__shakeY{
+  animation: 0.5s ease shakeY infinite
+}
+@keyframes shakeY {
+  0%{
+    transform: translateY(0);
+  }
+  25%{
+    transform: translateY(10%)
+  }
+  50%{
+    transform: translateY(15%)
+  }
+  75%{
+    transform:translateY(10%)
+  }
+  100%{
+    transform: translateY(0);
+  }
 }

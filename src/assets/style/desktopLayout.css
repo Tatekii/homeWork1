@@ -1,8 +1,93 @@
-@import url('./common.css');
+/* @import url('./common.css');
 @import url('./desktop/big.css');
-@import url('./desktop/small.css');
+@import url('./desktop/small.css'); */
 html,body{
   min-width: 1440px;
-  font-weight: 700;
   background: var(--Bg--);
+}
+.pointer:hover{
+  cursor: pointer;
+  animation: .2s linear enter-block forwards;
+}
+.pointer{
+  animation: .2s linear leave-block ;
+}
+@keyframes enter-block{
+  from{
+    transform: scale(1);
+  }
+  to{
+    transform: scale(1.1);
+    filter: contrast(90%)
+    ;
+  }
+}
+
+@keyframes leave-block{
+  from{
+    transform: scale(1.1);
+  }
+  to{
+    transform: scale(1);
+  }
+}
+
+.wrapper {
+  background: var(--Bg--);
+}
+.top-patten {
+  background: var(--TopBg--);
+  height: 240px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.body-wrapper {
+  position: relativ;
+  margin-top: -240px;
+  width: 100%;
+  padding: 30px 100px;
+}
+.header {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header .left {
+}
+.header .left .title {
+  font-size: 30px;
+  color: var(--Text--);
+}
+.header .left .views {
+  color: var(--CardText--);
+}
+.header .right {
+  height: 66px;
+  line-height: 66px;
+  display: flex;
+  width: 10%;
+  justify-content: space-between;
+}
+.header .right .switch-title {
+  color: var(--CardText--);
+}
+.changes {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 34px;
+}
+.overview {
+}
+.overview .overview-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.overview .overview-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

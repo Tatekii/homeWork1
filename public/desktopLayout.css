@@ -1,0 +1,77 @@
+html,
+body {
+  min-width: 1440px;
+  font-weight: 700;
+  background: var(--Bg--);
+}
+.pointer:hover {
+  cursor: pointer;
+  animation: 0.2s linear enter-block forwards;
+}
+.pointer {
+  animation: 0.2s linear leave-block;
+}
+@keyframes enter-block {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+    filter: contrast(90%);
+  }
+}
+
+@keyframes leave-block {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.top-patten {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.body-wrapper {
+  padding: 30px 100px;
+}
+.header {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header .left {
+}
+.header .left .title {
+  font-size: 30px;
+  color: var(--Text--);
+}
+.header .right {
+  width: 10%;
+}
+
+.changes {
+  flex-direction: row;
+  margin-bottom: 34px;
+  justify-content: space-between;
+}
+
+.overview .overview-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* biggerBLock */
+.big-card-block {
+  width: 22%;
+  border-radius: 6px;
+}
+
+.small-card-block {
+  width: 22%;
+}

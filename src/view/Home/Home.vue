@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="top-partten"></div>
+    <div class="top-patten"></div>
     <div class="body-wrapper">
       <header class="header">
         <div class="left">
@@ -197,28 +197,14 @@ export default {
 .wrapper {
   background: var(--Bg--);
 }
-.top-partten {
+.top-patten {
   background: var(--TopBg--);
   height: 240px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
 }
 .body-wrapper {
-  position: relativ;
+  position: relative;
   margin-top: -240px;
   width: 100%;
-  padding: 30px 100px;
-}
-.header {
-  margin-bottom: 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.header .left {
-}
-.header .left .title {
-  font-size: 30px;
 }
 .header .left .views {
   color: var(--CardText--);
@@ -227,7 +213,6 @@ export default {
   height: 66px;
   line-height: 66px;
   display: flex;
-  width: 10%;
   justify-content: space-between;
 }
 .header .right .switch-title {
@@ -236,20 +221,9 @@ export default {
 .changes {
   display: flex;
   width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 34px;
-}
-.overview {
 }
 .overview .overview-title {
   font-size: 24px;
   margin-bottom: 20px;
-}
-.overview .overview-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 </style>
