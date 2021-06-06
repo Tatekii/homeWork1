@@ -33,7 +33,6 @@
 
 <script>
 import '@/assets/style/common.css';
-import '@/assets/style/darkTheme.css'
 import BigCard from
   '@/components/BigCard/BigCard'
 import SmallCard from '@/components/SmallCard/SmallCard'
@@ -79,12 +78,12 @@ export default {
           platform: 'facebook',
           data: [
             {
-              type:'page views',
+              type: 'page views',
               number: 87,
               compare: 3
             },
             {
-              type:'likes',
+              type: 'likes',
               number: 52,
               compare: -2
             }
@@ -94,12 +93,12 @@ export default {
           platform: 'instagram',
           data: [
             {
-              type:'profile views',
+              type: 'profile views',
               number: 52000,
               compare: 1375
             },
             {
-              type:'likes',
+              type: 'likes',
               number: 5462,
               compare: 2257
             }
@@ -109,12 +108,12 @@ export default {
           platform: 'twitter',
           data: [
             {
-              type:'retweetws',
+              type: 'retweetws',
               number: 117,
               compare: 303
             },
             {
-              type:'likes',
+              type: 'likes',
               number: 507,
               compare: 553
             }
@@ -124,32 +123,38 @@ export default {
           platform: 'youtube',
           data: [
             {
-              type:'likes',
+              type: 'likes',
               number: 107,
               compare: -19
             },
             {
-              type:'total views',
+              type: 'total views',
               number: 1407,
               compare: -12
             }
           ]
         }
       ]
-
     }
   },
   methods: {
     formatNum: function (num) {
       return commaFormat(num)
     },
-    switchTheme(switchFlag){
-      console.log(switchFlag);
-      if(!switchFlag){
-        // useDarkMode
-      }else{
-        console.log();
+    switchTheme (switchFlag) {
+      const useDarkTheme = !switchFlag
+      const darkSheet = document.getElementById('darkTheme')
+      const lightSheet = document.getElementById('lightTheme')
+      if (useDarkTheme) {
+        lightSheet.disabled = true
+        darkSheet.disabled = false
+        localStorage.setItem('theme','dark')
+      } else {
+        lightSheet.disabled = false
+        darkSheet.disabled = true
+        localStorage.setItem('theme','light')
       }
+
     }
   },
   computed: {
@@ -171,6 +176,13 @@ export default {
         acc += cur.number
         return acc
       }, 0)
+    }
+  },
+  created () {
+    let themeSetting = localStorage.getItem('theme')
+    console.log(themeSetting);
+    if (themeSetting === 'dark') {
+      this.switchTheme(false)
     }
   }
 }
