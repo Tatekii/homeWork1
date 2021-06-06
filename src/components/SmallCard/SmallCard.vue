@@ -1,7 +1,7 @@
 <template>
   <div class="small-card-block card pointer">
     <section class="title">
-      <span>{{ cardData.platform }}</span>
+      <span>{{ capitalizeFirst(cardData.type) }}</span>
       <svg-icon
         :icon-class="cardData.platform"
         style="width: 2em; height: 2em; vertical-align: middle"
@@ -9,29 +9,26 @@
     </section>
     <section class="data">
       <div class="number">{{ formatNum(cardData.number) }}</div>
-      <div v-if="cardData.compare > 0">
-        <div class="compare">
-          <svg-icon icon-class="up" style="vertical-align: middle"></svg-icon>
-          {{ Math.abs(cardData.compare) }}%
-        </div>
-      </div>
-      <div v-else>
-        <div class="compare red animate__shakeY">
-          <svg-icon icon-class="down" style="vertical-align: middle"></svg-icon>
-          {{ Math.abs(cardData.compare) }}%
-        </div>
-      </div>
+      <Arrow
+        class="line-adjust"
+        :compareNumber="cardData.compare"
+        compareType="%"
+      ></Arrow>
     </section>
   </div>
 </template>
 <script>
 import kFormat from '@/assets/helper/kFormat.js'
+import Arrow from '@/components/CompareArrow/CompareArrow'
+import capitalizeFirst from '@/assets/helper/upperCaseFirstLetter.js'
 export default {
   name: 'SmallCard',
+  components: { Arrow },
   props: {
     cardData: Object
   }, methods: {
-    formatNum: kFormat
+    formatNum: kFormat,
+    capitalizeFirst
   }
 }
 </script>
@@ -61,11 +58,7 @@ export default {
 .data .number {
   font-size: 34px;
 }
-.data .compare {
+.line-adjust {
   padding-top: 18px;
-  color: var(--LimeGreen--);
-}
-.compare.red {
-  color: var(--BrightRed--);
 }
 </style>

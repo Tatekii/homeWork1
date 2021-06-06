@@ -10,25 +10,18 @@
       </div>
       <div class="count">{{ formatNum(cardData.number) }}</div>
       <p class="followers">FOLLOWERS</p>
-      <div v-if="cardData.compare > 0">
-        <div class="compare">
-          <svg-icon icon-class="up" style="vertical-align: middle"></svg-icon>
-          {{ compareAbs(cardData.compare) }} Today
-        </div>
-      </div>
-      <div v-else>
-        <div class="compare red animate__shakeY">
-          <svg-icon icon-class="down" style="vertical-align: middle"></svg-icon>
-          {{ compareAbs(cardData.compare) }} Today
-        </div>
-      </div>
+      <Arrow class="line-adjust" :compareNumber="cardData.compare" :compareType="today"></Arrow>
     </div>
 </template>
 
 <script>
 import formatNumToK from '@/assets/helper/kFormat.js'
+import Arrow from '@/components/CompareArrow/CompareArrow'
 export default {
   name: 'BigCard',
+  components:{
+      Arrow
+  },
   props: {
     cardData: Object
   },
@@ -77,12 +70,8 @@ export default {
   color: var(--CardText--);
   margin-bottom: 20px;
 }
-.compare {
+.line-adjust {
   height: 16px;
   line-height: 16px;
-  color: var(--LimeGreen--);
-}
-.compare.red {
-  color: var(--BrightRed--);
 }
 </style>

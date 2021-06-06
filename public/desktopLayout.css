@@ -9,7 +9,7 @@ body {
   animation: 0.2s linear enter-block forwards;
 }
 .pointer {
-  animation: 0.2s linear leave-block;
+  transition: all 1s linear;
 }
 @keyframes enter-block {
   from {
@@ -53,13 +53,13 @@ body {
   width: 10%;
 }
 
-.changes {
+.changes-wrapper {
   flex-direction: row;
   margin-bottom: 34px;
   justify-content: space-between;
 }
 
-.overview .overview-list {
+.overview .overview-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

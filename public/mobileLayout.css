@@ -24,7 +24,7 @@ body {
   color: var(--Text--);
 }
 
-.changes {
+.changes-wrapper {
   flex-direction: column;
 }
 

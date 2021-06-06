@@ -11,20 +11,26 @@
         </div>
         <div class="right">
           <div class="switch-title">Dark Mode</div>
-          <ASwitch @switchTheme="switchTheme" :isChecked="switchState"></ASwitch>
+          <ASwitch
+            @switchTheme="switchTheme"
+            :isChecked="switchState"
+          ></ASwitch>
         </div>
       </header>
       <section class="changes">
-        <BigCard v-for="item in sum" :key="item.platform" :cardData="item" />
+        <draggable class="changes-wrapper" v-model="sum"
+          ><BigCard v-for="item in sum" :key="item.platform" :cardData="item"
+        /></draggable>
       </section>
       <section class="overview">
         <p class="overview-title">Overview - Today</p>
         <div class="overview-list">
-          <SmallCard
-            v-for="item in overViewsFormat"
-            :key="item.b_index"
-            :cardData="item"
-          />
+          <draggable class="overview-wrapper" v-model="overViews">
+            <SmallCard
+              v-for="item in overViews"
+              :key="item.b_index"
+              :cardData="item"
+          /></draggable>
         </div>
       </section>
     </div>
@@ -38,12 +44,15 @@ import BigCard from
 import SmallCard from '@/components/SmallCard/SmallCard'
 import ASwitch from '@/components/ASwitch/ASwitch'
 import commaFormat from '@/assets/helper/commaFormat.js'
+import draggable from 'vuedraggable'
+
 export default {
   name: 'Home',
   components: {
     BigCard,
     SmallCard,
-    ASwitch
+    ASwitch,
+    draggable
   },
   data () {
     return {
@@ -73,69 +82,129 @@ export default {
           compare: -144,
         }
       ],
+      // overViews: [
+      //   {
+      //     platform: 'facebook',
+      //     data: [
+      //       {
+      //         type: 'page views',
+      //         number: 87,
+      //         compare: 3
+      //       },
+      //       {
+      //         type: 'likes',
+      //         number: 52,
+      //         compare: -2
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     platform: 'instagram',
+      //     data: [
+      //       {
+      //         type: 'profile views',
+      //         number: 52000,
+      //         compare: 1375
+      //       },
+      //       {
+      //         type: 'likes',
+      //         number: 5462,
+      //         compare: 2257
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     platform: 'twitter',
+      //     data: [
+      //       {
+      //         type: 'retweetws',
+      //         number: 117,
+      //         compare: 303
+      //       },
+      //       {
+      //         type: 'likes',
+      //         number: 507,
+      //         compare: 553
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     platform: 'youtube',
+      //     data: [
+      //       {
+      //         type: 'likes',
+      //         number: 107,
+      //         compare: -19
+      //       },
+      //       {
+      //         type: 'total views',
+      //         number: 1407,
+      //         compare: -12
+      //       }
+      //     ]
+      //   }
+      // ],
       overViews: [
         {
+          short: 'f_p',
+          compare: 3,
+          number: 87,
           platform: 'facebook',
-          data: [
-            {
-              type: 'page views',
-              number: 87,
-              compare: 3
-            },
-            {
-              type: 'likes',
-              number: 52,
-              compare: -2
-            }
-          ]
+          type: 'page views'
         },
         {
+          short: 'f_l',
+          compare: -2,
+          number: 52,
+          platform: 'facebook',
+          type: 'likes'
+        },
+        {
+          short: 'i_p',
+          compare: 1375,
+          number: 52000,
           platform: 'instagram',
-          data: [
-            {
-              type: 'profile views',
-              number: 52000,
-              compare: 1375
-            },
-            {
-              type: 'likes',
-              number: 5462,
-              compare: 2257
-            }
-          ]
+          type: 'profile views'
         },
         {
+          short: 'i_l',
+          compare: 2257,
+          number: 5462,
+          platform: 'instagram',
+          type: 'likes'
+        },
+        {
+          short: 't_r',
+          compare: 303,
+          number: 117,
           platform: 'twitter',
-          data: [
-            {
-              type: 'retweetws',
-              number: 117,
-              compare: 303
-            },
-            {
-              type: 'likes',
-              number: 507,
-              compare: 553
-            }
-          ]
+          type: 'retweetws'
         },
         {
+          short: 't_l',
+          compare: 553,
+          number: 507,
+          platform: 'twitter',
+          type: 'likes'
+        },
+        {
+          short: "y_l",
+          compare: -19,
+          number: 107,
           platform: 'youtube',
-          data: [
-            {
-              type: 'likes',
-              number: 107,
-              compare: -19
-            },
-            {
-              type: 'total views',
-              number: 1407,
-              compare: -12
-            }
-          ]
+          type: 'likes'
+        },
+        {
+          short: 'y_t',
+          compare: -12,
+          number: 1407,
+          platform: 'youtube',
+          type: 'total views'
         }
       ],
-      switchState:true
+      switchState: true,
+      sumShowOrder: [],
+      overViewOrder: []
     }
   },
   methods: {
@@ -149,30 +218,20 @@ export default {
       if (useDarkTheme) {
         lightSheet.disabled = true
         darkSheet.disabled = false
-        localStorage.setItem('theme','dark')
+        localStorage.setItem('theme', 'dark')
       } else {
         lightSheet.disabled = false
         darkSheet.disabled = true
-        localStorage.setItem('theme','light')
+        localStorage.setItem('theme', 'light')
       }
       this.switchState = !this.switchState
 
+    },
+    handleSort (e) {
+      console.log(e);
     }
   },
   computed: {
-    overViewsFormat () {
-      return this.overViews.reduce((acc, cur) => {
-        let platform = cur.platform
-        let k = 0
-        for (let i = 0; i < cur.data.length; i++) {
-          let j = cur.data[i]
-          j.platform = platform
-          j._index = k++
-          acc.push(j)
-        }
-        return acc
-      }, [])
-    },
     totalFollwers () {
       return this.sum.reduce((acc, cur) => {
         acc += cur.number
@@ -186,9 +245,13 @@ export default {
     if (themeSetting === 'dark') {
       this.switchTheme(false)
       this.switchState = false
-    }else{
+    } else {
       this.switchState = true
     }
+  },
+  beforeDestroyed () {
+    // storage order
+    // localStorage.setItem('sort',[1,2,3])
   }
 }
 </script>
@@ -218,7 +281,7 @@ export default {
 .header .right .switch-title {
   color: var(--CardText--);
 }
-.changes {
+.changes-wrapper {
   display: flex;
   width: 100%;
 }
