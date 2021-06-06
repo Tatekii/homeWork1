@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <a-switch
-      default-checked
-      :loading="loading"
-      @change="onChange"
-      @click="onClick"
-    />
+  <div class="pointer">
+      <a-switch
+        :checked="isChecked"
+        :loading="loading"
+        @change="onChange"
+        @click="onClick"
+      />
   </div>
 </template>
 <script>
@@ -16,15 +16,18 @@ export default {
       loading: false
     };
   },
+  props: {
+    isChecked: Boolean
+  },
   methods: {
     onChange (checked) {
       this.$emit('switchTheme', checked)
     },
     onClick () {
       this.loading = true
-      setTimeout(()=>{
+      setTimeout(() => {
         this.loading = false
-      },500)
+      }, 500)
     }
   }
 };

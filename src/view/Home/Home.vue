@@ -11,7 +11,7 @@
         </div>
         <div class="right">
           <div class="switch-title">Dark Mode</div>
-          <ASwitch @switchTheme="switchTheme"></ASwitch>
+          <ASwitch @switchTheme="switchTheme" :isChecked="switchState"></ASwitch>
         </div>
       </header>
       <section class="changes">
@@ -134,7 +134,8 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      switchState:true
     }
   },
   methods: {
@@ -154,6 +155,7 @@ export default {
         darkSheet.disabled = true
         localStorage.setItem('theme','light')
       }
+      this.switchState = !this.switchState
 
     }
   },
@@ -179,19 +181,19 @@ export default {
     }
   },
   created () {
+    //false => darkmode
     let themeSetting = localStorage.getItem('theme')
-    console.log(themeSetting);
     if (themeSetting === 'dark') {
       this.switchTheme(false)
+      this.switchState = false
+    }else{
+      this.switchState = true
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
-* {
-  color: var(--Text--);
-}
 .wrapper {
   background: var(--Bg--);
 }
@@ -246,6 +248,7 @@ export default {
 }
 .overview .overview-list {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }

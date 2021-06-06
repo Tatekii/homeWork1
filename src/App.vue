@@ -16,6 +16,8 @@ export default {
 
 <style>
 #app {
-  font-family: "Inter"
+  font-family: "Inter";
+  min-height: 100vh;
+  background:var(--Bg--);
 }
 </style>

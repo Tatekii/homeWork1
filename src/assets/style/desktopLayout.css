@@ -1,4 +1,8 @@
-body{
+@import url('./common.css');
+@import url('./desktop/big.css');
+@import url('./desktop/small.css');
+html,body{
   min-width: 1440px;
   font-weight: 700;
+  background: var(--Bg--);
 }

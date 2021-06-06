@@ -1,0 +1,26 @@
+.small-card-block {
+  height: 130px;
+  width: 22%;
+  background: var(--CardBg--);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  padding: 30px;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: var(--CardText--);
+}
+.data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 12px;
+}
+.data .number {
+  font-size: 34px;
+}
+.data .compare {
+  padding-top: 10px;
+}
