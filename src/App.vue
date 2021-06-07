@@ -11,10 +11,6 @@ export default {
   name: 'App',
   components: {
     Home
-  },
-  mounted(){
-    let k = document.getElementsByClassName('skeleton')[0]
-    document.getElementById('app').removeChild(k)
   }
 }
 </script>

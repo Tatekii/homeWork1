@@ -1,24 +1,36 @@
-# antd-work
+# Cyphemes work - siyin
 
-## Project setup
-```
-npm install
-```
+![lighthouse](./lighthouse.jpg)
+## Accessibility Fault😢
+- Less contrast ratio .
+- Disabling mobile zooming .
+## Features⭐️
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- ### Declarative Rendering
 
-### Compiles and minifies for production
-```
-npm run build
-```
+  `Vue.js`
+- ### Desktop/mobile device adaptation
+  
+  Media query bind layout styleSheet.
 
-### Lints and fixes files
-```
-npm run lint
-```
+- ### Switch theme
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+  - Use `<link disable>` to switch theme styleSheet,common styles are already import.
+  - Switch button debounce.
+  - Storage theme setting into `LocalStorage`.
+- ### Daggable
+
+  - Ues `vuedraggable.js` and storage order into `LocalStorage`.
+
+  - [SortableJS
+/
+Vue.Draggable](https://github.com/SortableJS/Vue.Draggable)
+
+  - 🤔I choose to keeps daggable in mobile device, but it was a little bit effected scroll.
+
+- ### Animation
+  - Decrease number bouncing
+  - Mouse hover block animation（disable in mobile）
+  - Switch animation
+
+### 😢always forgot commit......

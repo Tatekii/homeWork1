@@ -1,5 +1,5 @@
 <template>
-  <div class="small-card-block card pointer">
+  <a class="small-card-block card pointer" :href="'http://www.'+cardData.platform+'.com'" target="_blank">
     <section class="title">
       <span>{{ capitalizeFirst(cardData.type) }}</span>
       <svg-icon
@@ -15,7 +15,7 @@
         compareType="%"
       ></Arrow>
     </section>
-  </div>
+  </a>
 </template>
 <script>
 import kFormat from '@/assets/helper/kFormat.js'

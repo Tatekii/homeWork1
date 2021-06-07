@@ -1,7 +1,12 @@
 <template>
   <div class="pointer outer-wrapper" @click="onChange">
     <div class="inner-wrapper">
-      <div class="slideroad"><div class="switch" :class="isChecked?'slideChecked':'slideunChecked'"></div></div>
+      <div class="slideroad">
+        <div
+          class="switch"
+          :class="isChecked ? 'slideChecked' : 'slideunChecked'"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
@@ -55,18 +60,12 @@ export default {
   border-radius: 50%;
   background: var(--TopBg--);
 }
-.slideChecked{
-  animation: 1s linear slide forwards;
+.slideunChecked {
+  transition:ease-out .3s;
+  transform: translateX(0);
 }
-.slideunChecked{
-  animation: 1s linear slide reverse forwards;
-}
-@keyframes slide{
-  from{
-
-  }
-  to{
-    transform: translateX(22px);
-  }
+.slideChecked {
+  transition:ease-out .3s;
+  transform: translateX(22px);
 }
 </style>

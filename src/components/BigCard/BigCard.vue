@@ -1,5 +1,5 @@
 <template>
-    <div class="big-card-block card pointer">
+    <a class="big-card-block card pointer" :href="'http://www.'+cardData.platform+'.com/'+formatName(cardData.name)" target="_blank">
       <div class="top-border" :class="cardData.platform + '-line'"></div>
       <div class="platform">
         <svg-icon
@@ -11,7 +11,7 @@
       <div class="count">{{ formatNum(cardData.number) }}</div>
       <p class="followers">FOLLOWERS</p>
       <Arrow class="line-adjust" :compareNumber="cardData.compare" compareType="today"></Arrow>
-    </div>
+    </a>
 </template>
 
 <script>
@@ -31,6 +31,9 @@ export default {
     },
     formatNum (num) {
       return formatNumToK(num)
+    },
+    formatName(str){
+      return str.slice(1)
     }
   }
 }

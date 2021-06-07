@@ -6,7 +6,7 @@
         <div class="left">
           <div class="title">Social Media Dashboard</div>
           <div class="views">
-            Total Follwers: {{ formatNum(totalFollwers) }}
+            Total Follwers: {{ formatNum(totalFollwers) || null }}
           </div>
         </div>
         <div class="right">
