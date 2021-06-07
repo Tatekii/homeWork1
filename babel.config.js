@@ -1,13 +1,13 @@
 module.exports = {
-  presets: [
-    "@vue/cli-plugin-babel/preset",
-    ["@babel/env", { targets: { node: 6 } }],
-  ],
+  presets: [["@babel/preset-env", { modules: false }]],
   plugins: [
-    [
-      "import",
-      { libraryName: "ant-design-vue", libraryDirectory: "es", style: "css" },
-    ],
     "lodash",
+    [
+      "component",
+      {
+        libraryName: "element-ui",
+        styleLibraryName: "theme-chalk",
+      },
+    ],
   ],
 };

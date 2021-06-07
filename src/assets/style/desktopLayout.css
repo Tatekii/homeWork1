@@ -10,7 +10,7 @@ html,body{
   animation: .2s linear enter-block forwards;
 }
 .pointer{
-  animation: .2s linear leave-block ;
+  animation: .2s linear all ;
 }
 @keyframes enter-block{
   from{
@@ -42,9 +42,8 @@ html,body{
   border-bottom-right-radius: 20px;
 }
 .body-wrapper {
-  position: relativ;
+  position: relative;
   margin-top: -240px;
-  width: 100%;
   padding: 30px 100px;
 }
 .header {

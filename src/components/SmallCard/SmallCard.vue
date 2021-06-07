@@ -35,11 +35,11 @@ export default {
 
 <style scoped>
 .small-card-block {
-  height: 130px;
+  height: 80px;
   background: var(--CardBg--);
   border-radius: 6px;
   margin-bottom: 24px;
-  padding: 30px;
+  padding: 28px;
 }
 .title {
   display: flex;
@@ -53,7 +53,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 12px;
+  padding-top: 20px;
 }
 .data .number {
   font-size: 34px;

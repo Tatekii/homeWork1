@@ -2,6 +2,7 @@ html,
 body {
   font-weight: 400;
   background: var(--Bg--);
+  width: inherit;
 }
 .top-patten {
   border-bottom-left-radius: 40px;
@@ -37,5 +38,4 @@ body {
 
 /* smallBlock */
 .small-card-block {
-  width: 100%
 }

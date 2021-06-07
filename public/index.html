@@ -1,21 +1,151 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.png">
-    <link rel="stylesheet" href="./theme/darkTheme.css" id="darkTheme" disabled="true">
-    <link rel="stylesheet" href="./theme/lightTheme.css" id="lightTheme">
-    <link rel="stylesheet" href="./desktopLayout.css" media="screen and (min-width:376px)">
-    <link rel="stylesheet" href="./mobileLayout.css" media="screen and (max-width:375px)">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="Social Media Dashboard"
+      content="Control pod of your social life.Data analyze and more!"
+    />
+    <link rel="icon" href="./favicon.png" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      .skeleton {
+        --blockBg--: rgb(224, 224, 224);
+        --blockRadius--: 40px;
+        --blockShadow--: drop-shadow(2px 2px 6px rgb(216, 216, 216));
+      }
+
+      .skeleton {
+        margin: 50px 180px;
+        display: flow-root;
+      }
+      .skeleton .title {
+        background: var(--blockBg--);
+        border-radius: var(--blockRadius--);
+        filter: var(--blockShadow--);
+      }
+      .skeleton .title.title_1 {
+        margin-top: 30px;
+        width: 45%;
+        height: 60px;
+      }
+      .skeleton .title.title_2 {
+        margin-top: 20px;
+        width: 20%;
+        height: 40px;
+      }
+      .skeleton .main {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .skeleton .main .item {
+        width: 22%;
+        margin: 20px 0;
+        height: 220px;
+        background: var(--blockBg--);
+        border-radius: var(--blockRadius--);
+        animation: 1s linear shine infinite;
+        filter: var(--blockShadow--);
+        animation: loading 4s linear infinite;
+        background-image: linear-gradient(
+          75deg,
+          #e8e7e7,
+          #e8e7e7 52%,
+          #f1f1f1 55%,
+          #e8e7e7 58%,
+          #e8e7e7
+        );
+        background-size: 400% 100%;
+      }
+      @keyframes loading {
+        0% {
+          background-position: 400% 50%;
+        }
+        to {
+          background-position: 0% 50%;
+        }
+      }
+      @media screen and (max-width: 375px) {
+        .skeleton {
+          margin: 4%;
+        }
+        .skeleton .title.title_1 {
+          margin: 0;
+          height: 40px;
+        }
+        .skeleton .title.title_2 {
+          margin-top: 4%;
+        }
+        .skeleton .main {
+          margin-top: 0;
+          flex-direction: column;
+        }
+        .skeleton .main .item {
+          width: 100%;
+          margin: 20px 0;
+          height: 220px;
+          background: var(--blockBg--);
+          border-radius: var(--blockRadius--);
+          animation: 1s linear shine infinite;
+          filter: var(--blockShadow--);
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <div class="skeleton">
+        <div class="title title_1"></div>
+        <div class="title title_2"></div>
+        <div class="main">
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+        <div class="title title_2"></div>
+        <div class="main">
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+      </div>
+    </div>
     <!-- built files will be auto injected -->
+    <link
+      rel="stylesheet"
+      href="./theme/darkTheme.css"
+      id="darkTheme"
+      disabled="true"
+    />
+    <link rel="stylesheet" href="./theme/lightTheme.css" id="lightTheme" />
+    <link
+      rel="stylesheet"
+      href="./desktopLayout.css"
+      media="screen and (min-width:376px)"
+    />
+    <link
+      rel="stylesheet"
+      href="./mobileLayout.css"
+      media="screen and (max-width:375px)"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap"
+      rel="stylesheet"
+      media="screen and (max-width:375px)"
+    />
   </body>
 </html>

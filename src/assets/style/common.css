@@ -21,6 +21,8 @@
 * {
   color: var(--Text--);
   font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 .animate__shakeY{
   animation: 0.5s ease shakeY infinite

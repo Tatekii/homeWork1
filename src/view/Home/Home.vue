@@ -18,14 +18,21 @@
         </div>
       </header>
       <section class="changes">
-        <draggable class="changes-wrapper" v-model="sum"
+        <draggable
+          class="changes-wrapper"
+          v-model="sum"
+          @sort="handleSort('sum')"
           ><BigCard v-for="item in sum" :key="item.platform" :cardData="item"
         /></draggable>
       </section>
       <section class="overview">
         <p class="overview-title">Overview - Today</p>
         <div class="overview-list">
-          <draggable class="overview-wrapper" v-model="overViews">
+          <draggable
+            class="overview-wrapper"
+            v-model="overViews"
+            @sort="handleSort('overview')"
+          >
             <SmallCard
               v-for="item in overViews"
               :key="item.b_index"
@@ -43,7 +50,8 @@ import BigCard from
   '@/components/BigCard/BigCard'
 import SmallCard from '@/components/SmallCard/SmallCard'
 import ASwitch from '@/components/ASwitch/ASwitch'
-import commaFormat from '@/assets/helper/commaFormat.js'
+import commaFormat from '@/assets/helper/commaFormat'
+import orderBy from '@/assets/helper/orderBy'
 import draggable from 'vuedraggable'
 
 export default {
@@ -58,92 +66,34 @@ export default {
     return {
       sum: [
         {
+          short: 'f',
           platform: 'facebook',
           name: '@nathanf',
           number: 1987,
           compare: 12,
         },
         {
+          short: 't',
           platform: 'twitter',
           name: '@nathanf',
           number: 1066,
           compare: 99,
         },
         {
+          short: 'i',
           platform: 'instagram',
           name: '@realnathanf',
           number: 11000,
           compare: 1099,
         },
         {
+          short: 'y',
           platform: 'youtube',
           name: 'Nathan F.',
           number: 8239,
           compare: -144,
         }
       ],
-      // overViews: [
-      //   {
-      //     platform: 'facebook',
-      //     data: [
-      //       {
-      //         type: 'page views',
-      //         number: 87,
-      //         compare: 3
-      //       },
-      //       {
-      //         type: 'likes',
-      //         number: 52,
-      //         compare: -2
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     platform: 'instagram',
-      //     data: [
-      //       {
-      //         type: 'profile views',
-      //         number: 52000,
-      //         compare: 1375
-      //       },
-      //       {
-      //         type: 'likes',
-      //         number: 5462,
-      //         compare: 2257
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     platform: 'twitter',
-      //     data: [
-      //       {
-      //         type: 'retweetws',
-      //         number: 117,
-      //         compare: 303
-      //       },
-      //       {
-      //         type: 'likes',
-      //         number: 507,
-      //         compare: 553
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     platform: 'youtube',
-      //     data: [
-      //       {
-      //         type: 'likes',
-      //         number: 107,
-      //         compare: -19
-      //       },
-      //       {
-      //         type: 'total views',
-      //         number: 1407,
-      //         compare: -12
-      //       }
-      //     ]
-      //   }
-      // ],
       overViews: [
         {
           short: 'f_p',
@@ -202,33 +152,44 @@ export default {
           type: 'total views'
         }
       ],
-      switchState: true,
-      sumShowOrder: [],
-      overViewOrder: []
+      switchState: true
     }
   },
   methods: {
     formatNum: function (num) {
       return commaFormat(num)
     },
-    switchTheme (switchFlag) {
-      const useDarkTheme = !switchFlag
+    switchTheme () {
       const darkSheet = document.getElementById('darkTheme')
       const lightSheet = document.getElementById('lightTheme')
-      if (useDarkTheme) {
-        lightSheet.disabled = true
-        darkSheet.disabled = false
+      lightSheet.disabled = !lightSheet.disabled
+      darkSheet.disabled = !darkSheet.disabled
+      if (!darkSheet.disabled) {
         localStorage.setItem('theme', 'dark')
       } else {
-        lightSheet.disabled = false
-        darkSheet.disabled = true
         localStorage.setItem('theme', 'light')
       }
       this.switchState = !this.switchState
-
     },
-    handleSort (e) {
-      console.log(e);
+    handleSort (sortType) {
+      if (sortType === 'sum') {
+        const sumOrder = this.getOrder(this.sum)
+        localStorage.setItem('sOrder', sumOrder)
+      }
+      if (sortType === 'overview') {
+        const overViewOrder = this.getOrder(this.overViews)
+        localStorage.setItem('vOrder', overViewOrder)
+      }
+    },
+    getOrder (d) {
+      const res = []
+      d.forEach(i => {
+        res.push(i.short)
+      })
+      return res
+    },
+    sortData () {
+      this.sum.sort(item => item)
     }
   },
   computed: {
@@ -248,10 +209,14 @@ export default {
     } else {
       this.switchState = true
     }
-  },
-  beforeDestroyed () {
-    // storage order
-    // localStorage.setItem('sort',[1,2,3])
+    // get localStorage order
+    let _sumOrder = (localStorage.getItem('sOrder'))
+    let _overViewOrder = (localStorage.getItem('vOrder'))
+    _sumOrder = _sumOrder?.split(',')
+    _overViewOrder = _overViewOrder?.split(',')
+    if (_sumOrder) this.sum = orderBy(this.sum, _sumOrder)
+    if (_overViewOrder) this.overViews = orderBy(this.overViews, _overViewOrder)
+
   }
 }
 </script>
@@ -265,9 +230,7 @@ export default {
   height: 240px;
 }
 .body-wrapper {
-  position: relative;
   margin-top: -240px;
-  width: 100%;
 }
 .header .left .views {
   color: var(--CardText--);

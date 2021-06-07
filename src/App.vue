@@ -11,15 +11,19 @@ export default {
   name: 'App',
   components: {
     Home
-  }, created () {
+  },
+  mounted(){
+    let k = document.getElementsByClassName('skeleton')[0]
+    document.getElementById('app').removeChild(k)
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   min-height: 100vh;
   background: var(--Bg--);
+  width: 100%;
 }
 </style>

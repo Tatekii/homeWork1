@@ -10,7 +10,7 @@
       </div>
       <div class="count">{{ formatNum(cardData.number) }}</div>
       <p class="followers">FOLLOWERS</p>
-      <Arrow class="line-adjust" :compareNumber="cardData.compare" :compareType="today"></Arrow>
+      <Arrow class="line-adjust" :compareNumber="cardData.compare" compareType="today"></Arrow>
     </div>
 </template>
 
@@ -54,6 +54,7 @@ export default {
   color: var(--CardText--);
   height: 50px;
   line-height: 50px;
+  margin-top: 10px;
 }
 .platform .platName {
   color: var(--CardText--);
@@ -62,6 +63,7 @@ export default {
 }
 .count {
   font-size: 56px;
+  margin-bottom: 6px;
 }
 .followers {
   font-size: 12px;
